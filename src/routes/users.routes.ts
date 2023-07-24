@@ -4,6 +4,7 @@ import { createUsers } from "../useCases/createUsers";
 import { deleteUsers } from "../useCases/deleteUsers";
 import { getUsers } from "../useCases/getUsers";
 import { getUsersById } from "../useCases/getUsersById";
+import { updateUsers } from "../useCases/updateUsers";
 
 const usersRoutes = Router();
 
@@ -21,6 +22,10 @@ usersRoutes.post("/", (req, res, next) => {
 
 usersRoutes.delete("/:id", (req, res, next) => {
     return deleteUsers.handle(req, res, next);
+});
+
+usersRoutes.put("/:id", (req, res, next) => {
+    return updateUsers.handle(req, res, next);
 });
 
 export { usersRoutes };
