@@ -19,13 +19,18 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             unique: true,
             validate: {
-                isEmail: true,
+                isEmail: {
+                    msg: "Invalid email format"
+                }
             },
         }
     }, {
         sequelize,
         modelName: "Users",
         paranoid: true,
+        scopes: {
+            all: { where: {} },
+        }
     });
     return Users;
 };
